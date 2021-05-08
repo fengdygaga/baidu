@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>咕咕咕</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <style type="text/css">
+    .center-in-center-4 {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    #srk{
+    	height: 30px;
+    	outline: 0;
+    	border-radius:10px 10px 10px 10px;
+    	border:2px solid #c4c7ce;
+    	background: #fff;
+    	color:#222;
+    	overflow: hidden;
+    	box-sizing: content-box;
+    }
+    #srk:focus {
+    	border-color: #4e6ef2 !important;
+    	opacity: 1;
+	}
+    </style>
+
+</head>
+
+<body>
+    <div class="center-in-center-4">
+        <div align="center">
+            <h1>超级搜索</h1>
+            <input id="srk"  value="" style="width: 350px">
+        </div>
+        </BR></BR>
+        <div align="center">
+            <input type="button" value="百度搜索" onclick="baidu()">
+            <input type="button" value="知乎搜索" onclick="zhihu()">
+            <input type="button" value="微信搜索" onclick="weixin()">
+            <input type="button" value="搜狗搜索" onclick="sougou()"></BR></BR>
+            <input type="button" value="必应国内搜索" onclick="bing_cn()">
+            <input type="button" value="必应国际搜索" onclick="bing_in()"></BR></BR>
+            <input type="button" value="CSDN搜索" onclick="csdn()">
+            <input type="button" value="bilibili搜索" onclick="bilibili()">
+            <input type="button" value="夸克搜索" onclick="quark()">
+            <input type="button" value="雪球搜索" onclick="xueqiu()"></BR></BR>
+            <input type="button" value="Gitee搜索" onclick="gitee()">
+            <input type="button" value="Github搜索" onclick="github()">
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function common(api) {
+        var search_text = document.getElementById("srk").value; //获取id为srk的input值
+        search_text = encodeURIComponent(search_text);
+        url = api + search_text;
+        return url;
+    }
+
+    function baidu() {
+        url = common("http://www.baidu.com/s?wd=");
+        window.open(url);
+    }
+
+    function sougou() {
+        url = common("https://www.sogou.com/web?query=");
+        window.open(url);
+    }
+
+    function bing_cn() {
+        url = common("https://cn.bing.com/search?q=");
+        window.open(url);
+    }
+
+    function bing_in() {
+        var search_text = document.getElementById("srk").value; //获取id为srk的input值
+        search_text = encodeURIComponent(search_text);
+        url = "https://cn.bing.com/search?q=" + search_text + "&ensearch=1";
+        window.open(url);
+    }
+
+    function zhihu() {
+        url = common("https://www.zhihu.com/search?type=content&q=");
+        window.open(url);
+    }
+
+    function csdn() {
+        url = common("https://so.csdn.net/so/search/all?q=");
+        window.open(url);
+    }
+
+    function bilibili() {
+        url = common("https://search.bilibili.com/all?keyword=");
+        window.open(url);
+    }
+
+    function weixin() {
+        url = common("https://weixin.sogou.com/weixin?type=2&query=");
+        window.open(url);
+    }
+
+    function quark() {
+        url = common("https://quark.sm.cn/s?q=");
+        window.open(url);
+    }
+
+    function gitee() {
+        url = common("https://search.gitee.com/?skin=rec&type=repository&q=");
+        window.open(url);
+    }
+
+    function github() {
+        url = common("https://github.com/search?q=");
+        window.open(url);
+    }
+
+    function xueqiu() {
+        url = common("https://xueqiu.com/k?q=");
+        window.open(url);
+    }
+    var el = document.getElementById("srk")
+    el.focus()
+    el.onkeydown = function(e) {
+        var evt = window.event || e;
+        if (evt.keyCode  === 13) {
+            baidu()
+        }
+    }
+    </script>
+</html>
